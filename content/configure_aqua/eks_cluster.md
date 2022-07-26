@@ -8,6 +8,12 @@ pre = "<b></b>"
 
 Amazon Elastic Kubernetes Service (Amazon EKS) is a fully managed Kubernetes service, trusted to run the most sensitive and mission critical applications because of its security, reliability, and scalability. 
 
+{{% notice note %}}
+If you are running this workshop at an AWS hosted event, a 3 node cluster with the name "eksworkshop-eksctl" will be pre-created for you. Please skip cluster creation step listed below.
+{{% /notice %}}
+
+
+
 ## EKS Cluster creation
 ```shell
 CLUSTER="aqua-<name>"
@@ -21,13 +27,33 @@ eksctl create cluster --name ${CLUSTER} --region ${AWS_REGION} --zones ${AWS_REG
 Launching EKS and all the dependencies will take approximately 15 minutes
 {{% /notice %}}
 
-## Verify the cluster
 
+
+
+
+## Verify the cluster
 #### Test the cluster:
-Confirm your nodes:
+
+Get cluster Name and Region:
 
 ```bash
-kubectl get nodes # if we see our 2 nodes, we know we have authenticated correctly
+eksctl get clusters
+```
+
+Set CLUSTER: (use the name of the Cluster from earlier step)
+
+```bash
+CLUSTER=<YOUR_CLUSTER_NAME>
+```
+
+Update kubeconfig:
+```bash
+aws eks update-kubeconfig --name $CLUSTER --region $AWS_REGION
+```
+
+Confirm your nodes:
+```bash
+kubectl get nodes # if we see our 3 nodes, we know we have authenticated correctly
 ```
 
 #### Export the Worker Role Name for use throughout the workshop:
