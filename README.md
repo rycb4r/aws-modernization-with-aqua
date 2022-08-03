@@ -16,7 +16,4 @@ It is broken down into the following sections and you should plan on 2.5 hours f
 - [**Module 2**](/registry_scanning/): Securing Amazon ECR Registry with Aqua
 - [**Module 3**](/runtime_security/): Securing Amazon EKS workloads with Aqua runtime security
 
-{{% notice info %}}
-You will need a GitHub account to fork the workshop repository containing the demo app.
-{{% /notice %}}
-
+**Note that you will need access to your own GitHub account as you will need to clone this repoistory to go through the workshop**
